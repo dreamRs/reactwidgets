@@ -1,0 +1,9 @@
+^reactwidgets\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^node_modules$
+^srcjs$
+^app\.R$
+^package\.json$
+^webpack\.config\.js$
+^yarn\.lock$

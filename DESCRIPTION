@@ -1,0 +1,15 @@
+Package: reactwidgets
+Title: Extra 'React' Widgets for 'Shiny'
+Version: 0.0.0.9000
+Authors@R: c(
+  person("Victor", "Perrier", email = "victor.perrier@dreamrs.fr", role = c("aut", "cre", "cph")),
+  person("Fanny", "Meyer", role = "aut"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports: 
+    htmltools,
+    reactR,
+    shiny
