@@ -1,15 +1,26 @@
 library(shiny)
-library(reactwidgets)
+# library(reactwidgets)
+pkgload::load_all()
 
 ui <- fluidPage(
   titlePanel("reactR Input Example"),
-  dualListBoxInput("textInput"),
-  textOutput("textOutput")
+  icon("rocket"),
+  dualListBoxInput(
+    "ID",
+    label = "Dual list box example:",
+    options = list(
+      list(value = "one", label = "Option one"),
+      list(value = "two", label = "Option two"),
+      list(value = "three", label = "Option three")
+    ),
+    width = 500
+  ),
+  verbatimTextOutput("res")
 )
 
 server <- function(input, output, session) {
-  output$textOutput <- renderText({
-    sprintf("You entered: %s", input$textInput)
+  output$res <- renderPrint({
+    input$ID
   })
 }
 
