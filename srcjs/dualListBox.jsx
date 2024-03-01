@@ -16,6 +16,9 @@ const DualListBoxInput = ({ configuration, value, setValue }) => {
             options={configuration.options}
             selected={selected}
             onChange={onChange}
+            canFilter={configuration.canFilter}
+            showOrderButtons={configuration.showOrderButtons}
+            preserveSelectOrder={configuration.preserveSelectOrder}
         />
     );
 };

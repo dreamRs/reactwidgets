@@ -9,7 +9,13 @@
 #' @name dualListBoxInput
 #'
 #' @importFrom htmltools tags css validateCssUnit
-dualListBoxInput <- function(inputId, label, ..., width = NULL) {
+dualListBoxInput <- function(inputId,
+                             label,
+                             options,
+                             canFilter = FALSE,
+                             showOrderButtons = FALSE,
+                             preserveSelectOrder = FALSE,
+                             width = 500) {
   input_tag <- reactR::createReactShinyInput(
     inputId = inputId,
     class = "dualListBox",
@@ -21,7 +27,12 @@ dualListBoxInput <- function(inputId, label, ..., width = NULL) {
       script = "dualListBox.js"
     ),
     default = NULL,
-    configuration = list(...),
+    configuration = list(
+      options = options,
+      canFilter = isTRUE(canFilter),
+      showOrderButtons = isTRUE(showOrderButtons),
+      preserveSelectOrder = isTRUE(preserveSelectOrder)
+    ),
     container = tags$div
   )
   tags$div(
