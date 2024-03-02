@@ -33,6 +33,7 @@ ui <- fluidPage(
         canFilter = TRUE,
         showOrderButtons = TRUE,
         preserveSelectOrder = TRUE,
+        alignActions = "top",
         width = "100%"
       ),
       verbatimTextOutput("res2")
@@ -49,4 +50,5 @@ server <- function(input, output, session) {
   })
 }
 
-shinyApp(ui, server)
+if (interactive())
+  shinyApp(ui, server)
