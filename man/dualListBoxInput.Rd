@@ -5,9 +5,38 @@
 \alias{updateDualListBoxInput}
 \title{React Dual Listbox}
 \usage{
-dualListBoxInput(inputId, label, ..., width = NULL)
+dualListBoxInput(
+  inputId,
+  label,
+  options,
+  canFilter = FALSE,
+  showOrderButtons = FALSE,
+  preserveSelectOrder = FALSE,
+  alignActions = c("middle", "top"),
+  width = 500
+)
 
 updateDualListBoxInput(session, inputId, value, configuration = NULL)
+}
+\arguments{
+\item{inputId}{The \code{input} slot that will be used to access the value.}
+
+\item{label}{Display label for the control, or \code{NULL} for no label.}
+
+\item{options}{Specifies the list of options that may exist on either side of the dual list box.}
+
+\item{canFilter}{If \code{TRUE}, search boxes will appear above both list boxes, allowing the user to filter the results.}
+
+\item{showOrderButtons}{If true, a set of up/down buttons will appear near the selected list box to allow the user to re-arrange the items.}
+
+\item{preserveSelectOrder}{If \code{TRUE}, the order in which the available options are selected are preserved when the items are moved to the right.}
+
+\item{alignActions}{A value specifying whether to align the action buttons to the 'top' or 'middle'.}
+
+\item{width}{The width of the input, e.g. \code{'400px'}, or \code{'100\%'};
+see \code{\link[shiny:validateCssUnit]{validateCssUnit()}}.}
+
+\item{value}{Initial value.}
 }
 \description{
 A feature-rich dual listbox.
