@@ -3,7 +3,7 @@ library(shiny)
 pkgload::load_all()
 
 ui <- fluidPage(
-  titlePanel("reactR Input Example"),
+  titlePanel("dualListBoxInput Example"),
   icon("rocket"),
   fluidRow(
     column(

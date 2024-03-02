@@ -36,10 +36,9 @@ dualListBoxInput <- function(inputId,
       package = "reactwidgets",
       script = "dualListBox.js"
     ),
-    default = selected,
+    default = if (is.null(selected)) list() else list1(selected),
     configuration = list(
       options = options,
-      selected = if (is.null(selected)) list() else list1(selected),
       canFilter = isTRUE(canFilter),
       showOrderButtons = isTRUE(showOrderButtons),
       preserveSelectOrder = isTRUE(preserveSelectOrder),
@@ -64,8 +63,8 @@ dualListBoxInput <- function(inputId,
 
 #' @rdname dualListBoxInput
 #' @export
-updateDualListBoxInput <- function(session, inputId, selected, configuration = NULL) {
-  message <- list(selected = selected)
+updateDualListBoxInput <- function(inputId, selected, configuration = NULL, session = shiny::getDefaultReactiveDomain()) {
+  message <- list(value = if (is.null(selected)) list() else list1(selected))
   if (!is.null(configuration)) message$configuration <- configuration
   session$sendInputMessage(inputId, message);
 }
