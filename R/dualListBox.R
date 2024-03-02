@@ -5,6 +5,7 @@
 #'
 #' @inheritParams shiny::textInput
 #' @param options Specifies the list of options that may exist on either side of the dual list box.
+#' @param selected A list of the selected options appearing in the rightmost list box.
 #' @param canFilter If `TRUE`, search boxes will appear above both list boxes, allowing the user to filter the results.
 #' @param showOrderButtons If true, a set of up/down buttons will appear near the selected list box to allow the user to re-arrange the items.
 #' @param preserveSelectOrder If `TRUE`, the order in which the available options are selected are preserved when the items are moved to the right.
@@ -19,6 +20,7 @@
 dualListBoxInput <- function(inputId,
                              label,
                              options,
+                             selected = NULL,
                              canFilter = FALSE,
                              showOrderButtons = FALSE,
                              preserveSelectOrder = FALSE,
@@ -34,9 +36,10 @@ dualListBoxInput <- function(inputId,
       package = "reactwidgets",
       script = "dualListBox.js"
     ),
-    default = NULL,
+    default = selected,
     configuration = list(
       options = options,
+      selected = if (is.null(selected)) list() else list1(selected),
       canFilter = isTRUE(canFilter),
       showOrderButtons = isTRUE(showOrderButtons),
       preserveSelectOrder = isTRUE(preserveSelectOrder),
@@ -61,8 +64,37 @@ dualListBoxInput <- function(inputId,
 
 #' @rdname dualListBoxInput
 #' @export
-updateDualListBoxInput <- function(session, inputId, value, configuration = NULL) {
-  message <- list(value = value)
+updateDualListBoxInput <- function(session, inputId, selected, configuration = NULL) {
+  message <- list(selected = selected)
   if (!is.null(configuration)) message$configuration <- configuration
   session$sendInputMessage(inputId, message);
+}
+
+#' @param choices A character vector or a named list, similar to [shiny::selectInput()]'s choices argument.
+#' @rdname dualListBoxInput
+#' @export
+prepareDualListBoxOptions <- function(choices) {
+  choices <- choicesWithNames(choices)
+  if (any(vapply(choices, is.list, logical(1)))) {
+    lapply(
+      X = seq_along(choices),
+      FUN = function(i) {
+        list(
+          label = names(choices)[i],
+          options = makeDualListBoxOptions(choices[[i]])
+        )
+      }
+    )
+  } else {
+    makeDualListBoxOptions(choices)
+  }
+}
+
+makeDualListBoxOptions <- function(x) {
+  lapply(
+    X = seq_along(x),
+    FUN = function(i) {
+      list(label = names(x)[i], value = unname(x)[[i]])
+    }
+  )
 }

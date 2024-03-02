@@ -3,12 +3,14 @@
 \name{dualListBoxInput}
 \alias{dualListBoxInput}
 \alias{updateDualListBoxInput}
+\alias{prepareDualListBoxOptions}
 \title{React Dual Listbox}
 \usage{
 dualListBoxInput(
   inputId,
   label,
   options,
+  selected = NULL,
   canFilter = FALSE,
   showOrderButtons = FALSE,
   preserveSelectOrder = FALSE,
@@ -16,7 +18,9 @@ dualListBoxInput(
   width = 500
 )
 
-updateDualListBoxInput(session, inputId, value, configuration = NULL)
+updateDualListBoxInput(session, inputId, selected, configuration = NULL)
+
+prepareDualListBoxOptions(choices)
 }
 \arguments{
 \item{inputId}{The \code{input} slot that will be used to access the value.}
@@ -24,6 +28,8 @@ updateDualListBoxInput(session, inputId, value, configuration = NULL)
 \item{label}{Display label for the control, or \code{NULL} for no label.}
 
 \item{options}{Specifies the list of options that may exist on either side of the dual list box.}
+
+\item{selected}{A list of the selected options appearing in the rightmost list box.}
 
 \item{canFilter}{If \code{TRUE}, search boxes will appear above both list boxes, allowing the user to filter the results.}
 
@@ -36,7 +42,7 @@ updateDualListBoxInput(session, inputId, value, configuration = NULL)
 \item{width}{The width of the input, e.g. \code{'400px'}, or \code{'100\%'};
 see \code{\link[shiny:validateCssUnit]{validateCssUnit()}}.}
 
-\item{value}{Initial value.}
+\item{choices}{A character vector or a named list, similar to \code{\link[shiny:selectInput]{shiny::selectInput()}}'s choices argument.}
 }
 \description{
 A feature-rich dual listbox.

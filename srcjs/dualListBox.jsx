@@ -5,8 +5,8 @@ import "react-dual-listbox/lib/react-dual-listbox.css";
 
 
 const DualListBoxInput = ({ configuration, value, setValue }) => {
-  //return <DualListBox options={configuration.options} onChange={e => setValue(e.target.value)}/>;
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState(configuration.selected);
+  //setValue(configuration.selected);
   function onChange(newValue) {
     setSelected(newValue)
     setValue(newValue)
