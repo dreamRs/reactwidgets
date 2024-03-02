@@ -11,9 +11,8 @@
 #' @param preserveSelectOrder If `TRUE`, the order in which the available options are selected are preserved when the items are moved to the right.
 #' @param alignActions A value specifying whether to align the action buttons to the 'top' or 'middle'.
 #'
-#' @importFrom htmltools tags css validateCssUnit
 #' @importFrom reactR createReactShinyInput
-#' @importFrom htmltools htmlDependency tags
+#' @importFrom htmltools htmlDependency tags findDependencies validateCssUnit
 #'
 #' @export
 #' @name dualListBoxInput
@@ -26,10 +25,10 @@ dualListBoxInput <- function(inputId,
                              preserveSelectOrder = FALSE,
                              alignActions = c("middle", "top"),
                              width = 500) {
-  input_tag <- reactR::createReactShinyInput(
+  input_tag <- createReactShinyInput(
     inputId = inputId,
     class = "dualListBox",
-    dependencies = htmltools::htmlDependency(
+    dependencies = htmlDependency(
       name = "dualListBox-input",
       version = "1.0.0",
       src = "www/reactwidgets/dualListBox",
@@ -42,21 +41,15 @@ dualListBoxInput <- function(inputId,
       canFilter = isTRUE(canFilter),
       showOrderButtons = isTRUE(showOrderButtons),
       preserveSelectOrder = isTRUE(preserveSelectOrder),
-      alignActions = match.arg(alignActions)
+      alignActions = match.arg(alignActions),
+      width = validateCssUnit(width),
+      label = makeLabel(label, inputId)
     ),
     container = tags$div
   )
-  tags$div(
-    class = "form-group shiny-input-container",
-    style = css(width = validateCssUnit(width)),
-    tags$label(
-      label,
-      class = "control-label",
-      class = if (is.null(label)) "shiny-label-null",
-      id = paste0(inputId, "-label"),
-      `for` = inputId
-    ),
-    input_tag
+  tagList(
+    input_tag,
+    findDependencies(shiny::icon("rocket"))
   )
 }
 

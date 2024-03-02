@@ -2,7 +2,7 @@ import { reactShinyInput } from "reactR";
 import React, { useState } from "react";
 import DualListBox from "react-dual-listbox";
 import "react-dual-listbox/lib/react-dual-listbox.css";
-
+import LabelInput from "./LabelInput";
 
 const DualListBoxInput = ({ configuration, value, setValue }) => {
   const [selected, setSelected] = useState(value);
@@ -11,15 +11,20 @@ const DualListBoxInput = ({ configuration, value, setValue }) => {
     setValue(newValue)
   }
   return (
-        <DualListBox
-            options={configuration.options}
-            selected={value}
-            onChange={onChange}
-            canFilter={configuration.canFilter}
-            showOrderButtons={configuration.showOrderButtons}
-            preserveSelectOrder={configuration.preserveSelectOrder}
-            alignActions={configuration.alignActions}
-        />
+        <div class="form-group shiny-input-container" style={{width: configuration.width}}>
+          <LabelInput
+              config={configuration.label}
+          />
+          <DualListBox
+              options={configuration.options}
+              selected={value}
+              onChange={onChange}
+              canFilter={configuration.canFilter}
+              showOrderButtons={configuration.showOrderButtons}
+              preserveSelectOrder={configuration.preserveSelectOrder}
+              alignActions={configuration.alignActions}
+          />
+        </div>
     );
 };
 

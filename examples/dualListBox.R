@@ -4,7 +4,6 @@ pkgload::load_all()
 
 ui <- fluidPage(
   titlePanel("dualListBoxInput Example"),
-  icon("rocket"),
   fluidRow(
     column(
       width = 6,

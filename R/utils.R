@@ -45,3 +45,16 @@ choicesWithNames <- function(choices) {
   names(choices)[missing] <- as.character(choices)[missing]
   choices
 }
+
+
+makeLabel <- function(label, inputId) {
+  class <- "control-label"
+  if (is.null(label))
+    class <- paste(class, "shiny-label-null")
+  list(
+    class = class,
+    id = paste0(inputId, "-label"),
+    `for` = inputId,
+    label = label
+  )
+}

@@ -3,7 +3,7 @@
 export(dualListBoxInput)
 export(prepareDualListBoxOptions)
 export(updateDualListBoxInput)
-importFrom(htmltools,css)
+importFrom(htmltools,findDependencies)
 importFrom(htmltools,htmlDependency)
 importFrom(htmltools,tags)
 importFrom(htmltools,validateCssUnit)

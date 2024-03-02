@@ -4,7 +4,6 @@ pkgload::load_all()
 
 ui <- fluidPage(
   titlePanel("updateDualListBoxInput Example"),
-  icon("rocket"),
   dualListBoxInput(
     "ID1",
     label = "Update Dual list box example:",
