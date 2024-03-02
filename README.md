@@ -16,12 +16,26 @@ You can install the development version of reactwidgets from [GitHub](https://gi
 remotes::install_github("dreamRs/reactwidgets")
 ```
 
-## Example
+## Dual Listbox
 
-This is a basic example which shows you how to solve a common problem:
+From [react-dual-listbox](https://jakezatecky.github.io/react-dual-listbox/)
 
-``` r
-library(reactwidgets)
-## basic example code
+```r
+dualListBoxInput(
+  "ID",
+  label = "Dual list box with options example:",
+  options = prepareDualListBoxOptions(list(
+    earth = list("luna"),
+    mars = c("phobos", "deimos"),
+    jupiter = c("io", "europa", "ganymede", "callisto")
+  )),
+  canFilter = TRUE,
+  showOrderButtons = TRUE,
+  preserveSelectOrder = TRUE,
+  alignActions = "top",
+  width = "100%"
+)
 ```
+
+![dualListBoxInput](man/figures/dualListBox.png)
 
