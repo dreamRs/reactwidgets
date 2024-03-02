@@ -15,6 +15,7 @@ ui <- fluidPage(
           "mimas", "enceladus", "tethys", "rhea", "titan", "iapetus"
         )),
         selected = "tethys",
+        isMulti = TRUE,
         width = "100%"
       ),
       verbatimTextOutput("res1")

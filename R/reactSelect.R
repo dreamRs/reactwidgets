@@ -3,8 +3,11 @@
 #' A feature-rich dual listbox.
 #'
 #' @inheritParams shiny::textInput
-#' @param options Specifies the list of options that may exist on either side of the dual list box.
-#' @param selected A list of the selected options appearing in the rightmost list box.
+#' @param options Specify the options the user can select from.
+#' @param selected Control the current value.
+#' @param isMulti Allow the user to select multiple values.
+#' @param isSearchable Allow the user to search for matching options.
+#' @param isDisabled Disable the control.
 #'
 #' @importFrom reactR createReactShinyInput
 #' @importFrom htmltools htmlDependency tags validateCssUnit
@@ -15,6 +18,9 @@ reactSelectInput <- function(inputId,
                              label,
                              options,
                              selected = NULL,
+                             isMulti = FALSE,
+                             isSearchable = FALSE,
+                             isDisabled = FALSE,
                              width = 500) {
   createReactShinyInput(
     inputId = inputId,
@@ -29,6 +35,9 @@ reactSelectInput <- function(inputId,
     default = if (is.null(selected)) list() else list1(selected),
     configuration = list(
       options = options,
+      isMulti = isTRUE(isMulti),
+      isSearchable = isTRUE(isSearchable),
+      isDisabled = isTRUE(isDisabled),
       width = validateCssUnit(width),
       label = makeLabel(label, inputId)
     ),
