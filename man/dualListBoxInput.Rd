@@ -18,7 +18,12 @@ dualListBoxInput(
   width = 500
 )
 
-updateDualListBoxInput(session, inputId, selected, configuration = NULL)
+updateDualListBoxInput(
+  inputId,
+  selected,
+  configuration = NULL,
+  session = shiny::getDefaultReactiveDomain()
+)
 
 prepareDualListBoxOptions(choices)
 }
@@ -41,6 +46,10 @@ prepareDualListBoxOptions(choices)
 
 \item{width}{The width of the input, e.g. \code{'400px'}, or \code{'100\%'};
 see \code{\link[shiny:validateCssUnit]{validateCssUnit()}}.}
+
+\item{configuration}{Other options to update the dual list box.}
+
+\item{session}{The Shiny session.}
 
 \item{choices}{A character vector or a named list, similar to \code{\link[shiny:selectInput]{shiny::selectInput()}}'s choices argument.}
 }

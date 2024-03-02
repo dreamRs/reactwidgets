@@ -60,7 +60,8 @@ dualListBoxInput <- function(inputId,
   )
 }
 
-
+#' @param configuration Other options to update the dual list box.
+#' @param session The Shiny session.
 #' @rdname dualListBoxInput
 #' @export
 updateDualListBoxInput <- function(inputId, selected, configuration = NULL, session = shiny::getDefaultReactiveDomain()) {
