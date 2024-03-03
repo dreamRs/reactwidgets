@@ -4,11 +4,11 @@ import Select from "react-select";
 import LabelInput from "./LabelInput";
 
 const ReactSelectInput = ({ configuration, value, setValue }) => {
-  const [selectedOption, setSelectedOption] = useState(value);
+  const [selectedOption, setSelectedOption] = useState(null);
   const handleSinglevalue = (value) => value === null ? [] : value.value;
   function onChange(newValue) {
     setSelectedOption(newValue)
-    setValue(configuration.isMulti ? newValue.map(v => v.label) : handleSinglevalue(newValue))
+    setValue(configuration.isMulti ? newValue.map(v => v.value) : handleSinglevalue(newValue))
   }
   return (
     <div class="form-group shiny-input-container" style={{width: configuration.width}}>
@@ -16,10 +16,12 @@ const ReactSelectInput = ({ configuration, value, setValue }) => {
         config={configuration.label}
       />
       <Select
-        defaultValue={selectedOption}
+        placeholder={configuration.placeholder}
+        defaultValue={configuration.selected}
         onChange={onChange}
         options={configuration.options}
         isMulti={configuration.isMulti}
+        closeMenuOnSelect={configuration.closeMenuOnSelect}
         isSearchable={configuration.isSearchable}
         isDisabled={configuration.isDisabled}
       />

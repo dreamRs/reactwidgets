@@ -14,14 +14,26 @@ ui <- fluidPage(
           "luna", "phobos", "deimos", "io", "europa", "ganymede", "callisto",
           "mimas", "enceladus", "tethys", "rhea", "titan", "iapetus"
         )),
-        selected = "tethys",
-        isMulti = TRUE,
         width = "100%"
       ),
       verbatimTextOutput("res1")
     ),
     column(
-      width = 6
+      width = 6,
+      reactSelectInput(
+        "ID2",
+        label = "Multi react select example:",
+        options = prepareDualListBoxOptions(c(
+          "luna", "phobos", "deimos", "io", "europa", "ganymede", "callisto",
+          "mimas", "enceladus", "tethys", "rhea", "titan", "iapetus"
+        )),
+        selected = "tethys",
+        placeholder = "Search for an option by typing",
+        isMulti = TRUE,
+        isSearchable = TRUE,
+        width = "100%"
+      ),
+      verbatimTextOutput("res2")
     )
   )
 )
