@@ -1,10 +1,13 @@
 var path = require('path');
 
 module.exports = {
-    entry: path.join(__dirname, 'srcjs', 'dualListBox.jsx'),
+    entry: {
+      "dualListBox/dualListBox": path.join(__dirname, 'srcjs', 'dualListBox.jsx'),
+      "reactSelect/reactSelect": path.join(__dirname, 'srcjs', 'reactSelect.jsx'),
+    },
     output: {
-        path: path.join(__dirname, 'inst/www/reactwidgets/dualListBox'),
-        filename: 'dualListBox.js'
+        path: path.join(__dirname, 'inst/www/reactwidgets'),
+        filename: '[name].js'
     },
     module: {
         rules: [

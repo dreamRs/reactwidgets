@@ -2,6 +2,8 @@
 
 export(dualListBoxInput)
 export(prepareDualListBoxOptions)
+export(prepareReactSelectOptions)
+export(reactSelectInput)
 export(updateDualListBoxInput)
 importFrom(htmltools,findDependencies)
 importFrom(htmltools,htmlDependency)
