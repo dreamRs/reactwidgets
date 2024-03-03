@@ -4,6 +4,7 @@ module.exports = {
     entry: {
       "dualListBox/dualListBox": path.join(__dirname, 'srcjs', 'dualListBox.jsx'),
       "reactSelect/reactSelect": path.join(__dirname, 'srcjs', 'reactSelect.jsx'),
+      "antdCascader/antdCascader": path.join(__dirname, 'srcjs', 'antdCascader.jsx')
     },
     output: {
         path: path.join(__dirname, 'inst/www/reactwidgets'),

@@ -1,6 +1,7 @@
 {
   "private": true,
   "dependencies": {
+    "antd": "^5.15.0",
     "react-dual-listbox": "^6.0.3",
     "react-select": "^5.8.0"
   },
