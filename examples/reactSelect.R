@@ -1,8 +1,9 @@
 library(shiny)
+library(bslib)
 # library(reactwidgets)
 pkgload::load_all()
 
-ui <- fluidPage(
+ui <- page_fluid(
   titlePanel("reactSelectInput Example"),
   fluidRow(
     column(
@@ -10,7 +11,7 @@ ui <- fluidPage(
       reactSelectInput(
         "ID1",
         label = "Basic react select example:",
-        options = prepareDualListBoxOptions(c(
+        options = prepareReactSelectOptions(c(
           "luna", "phobos", "deimos", "io", "europa", "ganymede", "callisto",
           "mimas", "enceladus", "tethys", "rhea", "titan", "iapetus"
         )),
@@ -23,11 +24,12 @@ ui <- fluidPage(
       reactSelectInput(
         "ID2",
         label = "Multi react select example:",
-        options = prepareDualListBoxOptions(c(
-          "luna", "phobos", "deimos", "io", "europa", "ganymede", "callisto",
-          "mimas", "enceladus", "tethys", "rhea", "titan", "iapetus"
+        options = prepareReactSelectOptions(list(
+          earth = list("luna"),
+          mars = c("phobos", "deimos"),
+          jupiter = c("io", "europa", "ganymede", "callisto")
         )),
-        selected = "tethys",
+        selected = "ganymede",
         placeholder = "Search for an option by typing",
         isMulti = TRUE,
         isSearchable = TRUE,

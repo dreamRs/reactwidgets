@@ -50,6 +50,10 @@ reactSelectInput <- function(inputId,
   )
 }
 
+#' @param choices A character vector or a named list, similar to [shiny::selectInput()]'s choices argument.
+#' @rdname reactSelectInput
+#' @export
+prepareReactSelectOptions <- prepareDualListBoxOptions
 
 
 selectedChoices <- function(choices, selected) {
@@ -58,6 +62,10 @@ selectedChoices <- function(choices, selected) {
   }
   if (length(selected) == 0) {
     return(character(0))
+  }
+  options <- unlist(lapply(X = choices, FUN = `[[`, "options"), recursive = FALSE)
+  if (!is.null(options)) {
+    choices <- options
   }
   values <- unlist(lapply(X = choices, FUN = `[[`, "value"), use.names = FALSE)
   selected <- which(values %in% selected)
