@@ -25,7 +25,7 @@ antdDatePickerInput <- function(inputId,
       package = "reactwidgets",
       script = "antd.js"
     ),
-    default = if (is.null(value)) list() else list1(value),
+    default = value,
     configuration = list(
       options = options,
       props = list(

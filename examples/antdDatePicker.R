@@ -12,11 +12,19 @@ ui <- page_fluid(
         "ID1",
         label = "Basic Date Picker example:",
         value = Sys.Date(),
-        # format = "YYYY-MM-DD",
-        # selected = "marseille",
+        showWeek = TRUE,
         width = "100%"
       ),
-      verbatimTextOutput("res1")
+      verbatimTextOutput("res1"),
+      
+      antdDatePickerInput(
+        "IDweek",
+        label = "Week Picker example:",
+        showWeek = TRUE,
+        picker = "week",
+        width = "100%"
+      ),
+      verbatimTextOutput("resWeek")
     ),
     column(
       width = 6,
@@ -33,6 +41,9 @@ ui <- page_fluid(
 server <- function(input, output, session) {
   output$res1 <- renderPrint({
     input$ID1
+  })
+  output$resWeek <- renderPrint({
+    input$IDweek
   })
   output$res2 <- renderPrint({
     input$ID2

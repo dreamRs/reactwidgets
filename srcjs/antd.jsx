@@ -1,5 +1,4 @@
 import { reactShinyInput } from "reactR";
-import React, { useState } from "react";
 import { Cascader, DatePicker } from "antd";
 import dayjs from 'dayjs';
 import LabelInput from "./LabelInput";
@@ -32,13 +31,16 @@ const DatePickerInput = ({ configuration, value, setValue }) => {
   function onChange(date, dateString) {
     setValue(dateString)
   }
+  if (value !== null) {
+    value = dayjs(value, "YYYY-MM-DD")
+  }
   return (
         <div class="form-group shiny-input-container" style={{width: configuration.width}}>
           <LabelInput
               config={configuration.label}
           />
           <DatePicker 
-            defaultValue={dayjs(value[0], "YYYY-MM-DD")}
+            defaultValue={value}
             onChange={onChange} 
             {...configuration.props}
           />
