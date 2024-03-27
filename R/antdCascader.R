@@ -4,7 +4,6 @@
 #' 
 #' @inheritParams shiny::textInput
 #' @param options Specify the options the user can select from.
-#' @param isDisabled Disable the control.
 #' 
 #' @importFrom reactR createReactShinyInput
 #' @importFrom htmltools htmlDependency tags validateCssUnit
@@ -23,11 +22,11 @@ antdCascaderInput <- function(inputId,
     inputId = inputId,
     class = "antdCascader",
     dependencies = htmlDependency(
-      name = "antd-cascader-input",
+      name = "antd-input",
       version = "1.0.0",
-      src = "www/reactwidgets/antdCascader",
+      src = "www/reactwidgets/antd",
       package = "reactwidgets",
-      script = "antdCascader.js"
+      script = "antd.js"
     ),
     default = if (is.null(selected)) list() else list1(selected),
     configuration = list(
