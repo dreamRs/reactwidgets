@@ -1,8 +1,8 @@
 library(shiny)
-# library(reactwidgets)
-pkgload::load_all()
+library(bslib)
+library(reactwidgets)
 
-ui <- fluidPage(
+ui <- page_fluid(
   titlePanel("updateDualListBoxInput Example"),
   dualListBoxInput(
     "ID1",

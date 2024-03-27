@@ -6,6 +6,7 @@
 #' @param options Specify the options the user can select from.
 #' @param selected Control the current value.
 #' @param isMulti Allow the user to select multiple values.
+#' @param closeMenuOnSelect Close the select menu when the user selects an option.
 #' @param isSearchable Allow the user to search for matching options.
 #' @param isDisabled Disable the control.
 #'
@@ -14,6 +15,8 @@
 #'
 #' @export
 #' @name reactSelectInput
+#' 
+#' @example examples/reactSelect.R
 reactSelectInput <- function(inputId,
                              label,
                              options,

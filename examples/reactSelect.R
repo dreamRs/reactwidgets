@@ -1,7 +1,6 @@
 library(shiny)
 library(bslib)
-# library(reactwidgets)
-pkgload::load_all()
+library(reactwidgets)
 
 ui <- page_fluid(
   titlePanel("reactSelectInput Example"),

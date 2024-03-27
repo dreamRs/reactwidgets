@@ -54,5 +54,60 @@ see \code{\link[shiny:validateCssUnit]{validateCssUnit()}}.}
 \item{choices}{A character vector or a named list, similar to \code{\link[shiny:selectInput]{shiny::selectInput()}}'s choices argument.}
 }
 \description{
-A feature-rich dual listbox.
+A feature-rich dual listbox, https://jakezatecky.github.io/react-dual-listbox/.
+}
+\examples{
+library(shiny)
+library(bslib)
+library(reactwidgets)
+
+ui <- page_fluid(
+  titlePanel("dualListBoxInput Example"),
+  fluidRow(
+    column(
+      width = 6,
+      dualListBoxInput(
+        "ID1",
+        label = "Basic Dual list box example:",
+        options = prepareDualListBoxOptions(c(
+          "luna", "phobos", "deimos", "io", "europa", "ganymede", "callisto",
+          "mimas", "enceladus", "tethys", "rhea", "titan", "iapetus"
+        )),
+        selected = "tethys",
+        width = "100\%"
+      ),
+      verbatimTextOutput("res1")
+    ),
+    column(
+      width = 6,
+      dualListBoxInput(
+        "ID2",
+        label = "Dual list box with options example:",
+        options = prepareDualListBoxOptions(list(
+          earth = list("luna"),
+          mars = c("phobos", "deimos"),
+          jupiter = c("io", "europa", "ganymede", "callisto")
+        )),
+        canFilter = TRUE,
+        showOrderButtons = TRUE,
+        preserveSelectOrder = TRUE,
+        alignActions = "top",
+        width = "100\%"
+      ),
+      verbatimTextOutput("res2")
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  output$res1 <- renderPrint({
+    input$ID1
+  })
+  output$res2 <- renderPrint({
+    input$ID2
+  })
+}
+
+if (interactive())
+  shinyApp(ui, server)
 }

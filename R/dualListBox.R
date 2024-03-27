@@ -1,7 +1,7 @@
 
 #' React Dual Listbox
 #'
-#' A feature-rich dual listbox.
+#' A feature-rich dual listbox, https://jakezatecky.github.io/react-dual-listbox/.
 #'
 #' @inheritParams shiny::textInput
 #' @param options Specifies the list of options that may exist on either side of the dual list box.
@@ -12,10 +12,12 @@
 #' @param alignActions A value specifying whether to align the action buttons to the 'top' or 'middle'.
 #'
 #' @importFrom reactR createReactShinyInput
-#' @importFrom htmltools htmlDependency tags findDependencies validateCssUnit
+#' @importFrom htmltools htmlDependency tags findDependencies validateCssUnit tagList
 #'
 #' @export
 #' @name dualListBoxInput
+#' 
+#' @example examples/dualListBox.R
 dualListBoxInput <- function(inputId,
                              label,
                              options,
