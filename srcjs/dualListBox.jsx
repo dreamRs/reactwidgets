@@ -16,6 +16,7 @@ const DualListBoxInput = ({ configuration, value, setValue }) => {
               config={configuration.label}
           />
           <DualListBox
+              id={configuration.id}
               options={configuration.options}
               selected={value}
               onChange={onChange}

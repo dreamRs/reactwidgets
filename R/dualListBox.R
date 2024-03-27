@@ -37,6 +37,7 @@ dualListBoxInput <- function(inputId,
     ),
     default = if (is.null(selected)) list() else list1(selected),
     configuration = list(
+      id = inputId,
       options = options,
       canFilter = isTRUE(canFilter),
       showOrderButtons = isTRUE(showOrderButtons),
