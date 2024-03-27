@@ -14,13 +14,16 @@ antdCascaderInput <- function(inputId,
                               label,
                               options,
                               selected = NULL,
+                              multiple = FALSE,
                               placeholder = "Select...",
+                              ...,
+                              className = "d-block w-100",
                               width = 500) {
   createReactShinyInput(
     inputId = inputId,
     class = "antdCascader",
     dependencies = htmlDependency(
-      name = "react-select-input",
+      name = "antd-cascader-input",
       version = "1.0.0",
       src = "www/reactwidgets/antdCascader",
       package = "reactwidgets",
@@ -29,7 +32,12 @@ antdCascaderInput <- function(inputId,
     default = if (is.null(selected)) list() else list1(selected),
     configuration = list(
       options = options,
-      placeholder = placeholder,
+      props = list(
+        placeholder = placeholder,
+        className = className,
+        multiple = multiple,
+        ...
+      ),
       width = validateCssUnit(width),
       label = makeLabel(label, inputId)
     ),

@@ -14,7 +14,10 @@ const CascaderInput = ({ configuration, value, setValue }) => {
           <LabelInput
               config={configuration.label}
           />
-          <Cascader options={configuration.options} onChange={onChange} placeholder={configuration.placeholder}
+          <Cascader 
+            options={configuration.options} 
+            onChange={onChange} 
+            {...configuration.props}
           />
         </div>
     );
