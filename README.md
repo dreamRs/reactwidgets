@@ -39,3 +39,28 @@ dualListBoxInput(
 
 ![dualListBoxInput](man/figures/dualListBox.png)
 
+
+
+## Select
+
+From [react-select](https://react-select.com/home)
+
+```r
+reactSelectInput(
+  "ID2",
+  label = "Multi react select example:",
+  options = prepareReactSelectOptions(list(
+    earth = list("luna"),
+    mars = c("phobos", "deimos"),
+    jupiter = c("io", "europa", "ganymede", "callisto")
+  )),
+  selected = "ganymede",
+  placeholder = "Search for an option by typing",
+  isMulti = TRUE,
+  isSearchable = TRUE,
+  width = "100%"
+)
+```
+
+![reactSelect](man/figures/reactSelect.png)
+
